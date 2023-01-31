@@ -1,26 +1,18 @@
-const mongodb = require("mongodb");
-const ObjectId = mongodb.ObjectId;
-let StudentReg;
+const Student = require("../models/StudentReg");
 
 class studentRegDAO {
-	static async injectDB(conn) {
-		if (StudentReg) {
-			return;
-		}
-		try {
-			StudentReg = await conn.db("Registration").collection("Student");
-		} catch (err) {
-			console.error(`Unable to establish coonection in StudentRegDAO: ${err}`);
-		}
-	}
-
 	static async addStudent(data) {
 		try {
 			const student = {
 				name: data.name,
 				email: data.email,
 			};
-			return await StudentReg.insertOne(student);
+			const newStudent = new Student(student);
+			newStudent.save().then(() => {
+				console.log("Student Added Success");
+			});
+			console.log(newStudent);
+			return newStudent;
 		} catch (err) {
 			console.error(`Unable to insert student in StudentRegDAO: ${err}`);
 			return { error: err };
