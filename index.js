@@ -6,11 +6,10 @@ mongoose.set("strictQuery", true);
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.p5xwxcl.mongodb.net/?retryWrites=true&w=majority`;
 mongoose
 	.connect(uri, {
-		// maxPoolSize: 50,
-		// waitQueueTimeoutMS: 2500,
+		waitQueueTimeoutMS: 5000,
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
-		// useCreateIndex: true,
+		dbName: "Registrations",
 	})
 	.catch((err) => {
 		console.error(err.stack);
