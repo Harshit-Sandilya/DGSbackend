@@ -4,11 +4,7 @@ const Student = require("../models/StudentReg");
 class studentRegDAO {
 	static async addStudent(data) {
 		try {
-			const student = {
-				name: data.name,
-				email: data.email,
-			};
-			const newStudent = new Student(student);
+			const newStudent = new Student(data);
 			newStudent.save().then(() => {
 				console.log("Student Added Success");
 				sendEmail({
@@ -16,12 +12,12 @@ class studentRegDAO {
 					text: `${newStudent}`,
 					to: "dundlodgirlsschool@gmail.com",
 					from: process.env.EMAIL,
-					replyTo: `${student.email}`,
+					replyTo: `${data.email}`,
 				});
 				sendEmail({
 					subject: "Student Registration",
 					text: `${newStudent}`,
-					to: `${student.email}`,
+					to: `${data.email}`,
 					from: process.env.EMAIL,
 					replyTo: "dundlodgirlsschool@gmail.com",
 				});
