@@ -17,7 +17,7 @@ const createTransporter = async () => {
 	const accessToken = await new Promise((resolve, reject) => {
 		oauth2Client.getAccessToken((err, token) => {
 			if (err) {
-				reject("Failed to create access token :(");
+				reject("Failed to create access token");
 			}
 			resolve(token);
 		});
@@ -43,10 +43,4 @@ const sendEmail = async (emailOptions) => {
 	await emailTransporter.sendMail(emailOptions);
 };
 
-sendEmail({
-	subject: "Test",
-	text: "I am sending an email from nodemailer!",
-	to: "harshitsandilya2002@gmail.com",
-	from: process.env.EMAIL,
-	replyTo: "2021ucp1382@mnit.ac.in",
-});
+module.exports = sendEmail;
