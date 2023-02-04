@@ -3,8 +3,8 @@ const studentRegDAO = require("../dao/studentRegDAO");
 class StudentRegCtrl {
 	static async postStudent(req, res, next) {
 		try {
-			const studentReg = await studentRegDAO.addStudent(req.body);
-			res.json({ status: "success" });
+			console.log("print");
+			studentRegDAO.addStudent(res, req.body);
 		} catch (err) {
 			res.status(500).json({ error: err.message });
 		}

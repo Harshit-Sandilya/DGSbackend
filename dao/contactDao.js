@@ -4,8 +4,10 @@ class contactDAO {
 	static async addQuery(data) {
 		try {
 			const contact = {
-				name: data.name,
+				fullname: data.name,
 				email: data.email,
+				subject: data.subject,
+				body: data.body,
 			};
 			sendEmail({
 				subject: "Query",
