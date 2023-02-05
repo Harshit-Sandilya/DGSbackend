@@ -1,11 +1,9 @@
 const express = require("express");
-const cors = require("cors");
 const studentReg = require("./routes/studentReg.route.js");
 const teacherApp = require("./routes/teacherApp.route.js");
 const contact = require("./routes/contact.route.js");
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
 app.use("/studentReg", studentReg);
