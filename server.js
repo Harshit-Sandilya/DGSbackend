@@ -11,6 +11,7 @@ app.use(express.json());
 app.use("/studentReg", studentReg);
 app.use("/teacherApp", teacherApp);
 app.use("/contact", contact);
+app.use("/", (req, res) => res.status(200).json({ message: "running" }));
 app.use("*", (req, res) => res.status(404).json({ error: "Not found" }));
 
 module.exports = app;
