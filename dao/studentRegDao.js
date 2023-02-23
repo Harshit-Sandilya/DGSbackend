@@ -2,7 +2,7 @@ const e = require("cors");
 const sendEmail = require("../mailer");
 const Student = require("../models/StudentReg");
 
-class studentRegDAO {
+class studentRegDao {
   static async addStudent(res, data) {
     try {
       const newStudent = new Student(data);
@@ -37,4 +37,4 @@ class studentRegDAO {
   }
 }
 
-module.exports = studentRegDAO;
+module.exports = studentRegDao;

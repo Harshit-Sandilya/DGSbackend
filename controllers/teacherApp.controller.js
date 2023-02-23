@@ -1,4 +1,4 @@
-const teacherRegDAO = require("../dao/teacherAppDAO");
+const teacherRegDAO = require("../dao/teacherAppDao");
 
 class TeacherRegCtrl {
   static async postTeacher(req, res, next) {
